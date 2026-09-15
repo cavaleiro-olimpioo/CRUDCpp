@@ -15,9 +15,11 @@ void main() {
     bool program = true;
     int choose;
 
+    bool listExist;
+
     std::vector<Animal> animais;
 
-
+    int opt;
     int animalType;
 
 
@@ -71,10 +73,18 @@ void main() {
                 ReadAnimals(animais);
                 break;
             case 3:
-                std::cout << "Update" << std::endl;
+
                 break;
             case 4:
-                std::cout << "Delete" << std::endl;
+                listExist = ReadAnimals(animais);
+                if (listExist){
+                    std::cout << "Selecione o animal que deseja deletar: ";
+                    std::cin >> opt;
+
+                    animais.erase(animais.begin() + (opt-1));
+
+                    std::cout << "Animal removido com sucesso!" << std::endl;
+                }
                 break;
             case 0:
                 program = false;
