@@ -73,7 +73,45 @@ void main() {
                 ReadAnimals(animais);
                 break;
             case 3:
+                listExist = ReadAnimals(animais);
+                nome = "";
+                idade = 0;
+                peso = 0;
+                if (listExist){
+                    std::cout << "Selecione o animal de deseja editar: ";
+                    std::cin >> opt;
 
+                    std::cout << "Digite o novo nome (enter para manter): ";
+                    std::cin >> nome;
+                    if (nome == "")
+                        nome = animais[opt-1].nome;
+
+                    std::cout << "Digite a nova idade (enter para manter): ";
+                    std::cin >> idade;
+                    if (idade == 0)
+                        idade = animais[opt-1].idade;
+
+                    
+                    std::cout << "Digite o novo peso (enter para manter): ";
+                    std::cin >> peso;
+                    if (peso == 0)
+                        peso = animais[opt-1].peso;
+
+                    std::cout << "-=-=-=-=-= Selecione o tipo de animal =-=-=-=-=- \n1 - Gato \n2 - Cachorro \nEscolha: ";
+                    std::cin >> animalType;
+
+                    if (animalType == 1){
+                        Cachorro cachorro(nome, idade, peso);
+                        animais.push_back(cachorro);
+                    } else if(animalType == 2){
+                        Gato gato(nome, idade, peso);
+                        animais.push_back(gato);
+                    } else {
+                        std::cout << "[ERRO] Tipo de animal não encontrado" << std::endl;
+                    }
+                    std::cout << "Animal adicionado!" << std::endl << std::endl;
+                                            
+                    }
                 break;
             case 4:
                 listExist = ReadAnimals(animais);
